@@ -111,6 +111,8 @@ export interface FastImageProps extends AccessibilityProps, ViewProps {
      */
     style?: StyleProp<ImageStyle>
 
+    useLastImageAsDefaultSource?: boolean;
+
     /**
      * TintColor
      *

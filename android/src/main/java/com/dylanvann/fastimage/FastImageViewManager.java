@@ -68,6 +68,11 @@ class FastImageViewManager extends SimpleViewManager<FastImageViewWithUrl> imple
                         .getResourceDrawable(view.getContext(), source));
     }
 
+    @ReactProp(name = "useLastImageAsDefaultSource")
+    public void useLastImageAsDefaultSource(FastImageViewWithUrl view, @Nullable Boolean isActivated) {
+        view.useLastImageAsDefaultSource(isActivated);
+    }
+
     @ReactProp(name = "tintColor", customType = "Color")
     public void setTintColor(FastImageViewWithUrl view, @Nullable Integer color) {
         if (color == null) {

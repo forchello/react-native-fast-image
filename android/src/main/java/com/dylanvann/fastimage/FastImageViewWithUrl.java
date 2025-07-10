@@ -33,6 +33,12 @@ class FastImageViewWithUrl extends AppCompatImageView {
 
     public GlideUrl glideUrl;
 
+    private Boolean mUseLastImageAsDefaultSource = false;
+
+    public void useLastImageAsDefaultSource(@Nullable Boolean isActivated) {
+        mUseLastImageAsDefaultSource = isActivated;
+    }
+
     public FastImageViewWithUrl(Context context) {
         super(context);
     }
@@ -141,7 +147,7 @@ class FastImageViewWithUrl extends AppCompatImageView {
                             .load(imageSource == null ? null : imageSource.getSourceForLoad())
                             .apply(FastImageViewConverter
                                     .getOptions(context, imageSource, mSource)
-                                    .placeholder(mDefaultSource) // show until loaded
+                                    .placeholder(mUseLastImageAsDefaultSource ? this.getDrawable() : mDefaultSource) // show until loaded
                                     .fallback(mDefaultSource)); // null will not be treated as error
 
             if (key != null)
